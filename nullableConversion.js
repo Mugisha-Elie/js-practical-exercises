@@ -12,8 +12,9 @@ function nullableConversion(object){
             object[key] = "";
         }
     }
-    return object;
-}
 
+    return object
+
+}
 let obj = {a: 1, b: 2, c: null, d: undefined};
 console.log(nullableConversion(obj));
