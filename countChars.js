@@ -1,24 +1,19 @@
 function countChars(str){
-    // let obj = {};
-    // let count = 0;
-    // let newStr = str.split("").set();
-    // for(let i=0; i<newStr.length; i++){
-    //     if(newStr.includes(newStr[i])){
-    //         obj[newStr[i]] = count++;
-    //     }
-    // }
-    // return newStr;
-
-    let unique = [];
-    let newStr = str.split("");
-    for(let i=0; i<newStr.length; i++){
-        if(!unique.includes(newStr[i])){
-            unique.push(newStr[i]);
+    let myObj = {};
+    let chars = [];
+    for (let i = 0; i < str.length; i++) {
+        if(!chars.includes(str[i])){
+            chars.push(str[i]);
         }
-
-        
     }
+
+    myObj = chars.reduce((a, key) => Object.assign(a, { [key]: str.split('').filter(c => c === key).length }), {});
+
+
+    return myObj;
+
+    
 
 }
 
-console.log(countChars("danny"));
+console.log(countChars("Jimmy"));
