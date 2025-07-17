@@ -7,3 +7,5 @@ function everyNth(arr, n){
 }
 
 console.log(everyNth([0,1,2,3,4,5],2));
+
+console.log(Math.ceil(59.5));
