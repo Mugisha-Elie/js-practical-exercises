@@ -1,81 +1,111 @@
-// localStorage.setItem("movie", "The Longest Ride");
+const taskInput = document.getElementById("task-input");
+const addTaskButton = document.getElementById("add-task-button");
+const taskList = document.getElementById("task-list");
+const changeThemeButton = document.getElementById("change-theme-button");
+const bodyEl = document.body;
 
-// console.log(localStorage.getItem("movie"));
+let tasks = [];
+const themes = ["theme-light", "theme-dark", "theme-blue", "theme-green"];
+let currentThemeIndex = 0;
 
-// localStorage.setItem("song", "Bliss - Tyla");
-// console.log(localStorage.key(0))
-// console.log(localStorage.key(1))
-
-// // for(let key in localStorage){
-// //     console.log(localStorage.getItem(key))
-// // }
-
-// localStorage.removeItem("movie");
-
-// if("movie" in localStorage){
-//     console.log("Movie is in storage");
-// }else{
-//     console.log("Movie is not in storage");
-// }
-
-// localStorage.clear();
-// let results = [];
-// for (let key in localStorage){
-//     results.push(key);
-// }
-// if(results.length === 0){
-//     console.log("(:");
-// }else{
-//     console.log("):");
-//     console.log(results);
-// }
-
-// if(localStorage.length === 0){
-//     console.log("(:");
-
-// }else{
-//     console.log("):");
-//     console.log(localStorage)
-// }
-
-// let user = {name: "John", age: 30};
-// localStorage.setItem("user", JSON.stringify(user));
-
-// const retrieved = localStorage.getItem("user");
-
-// if(retrieved){
-//     var loaded = JSON.parse(retrieved);
-// }
-// console.log(retrieved);
-// console.log(loaded.name);
-// console.log(loaded.age);
-
-let obj = {
-    name: "John",
-    age: 30,
-    language: "JavaScript", 
-}
-localStorage.clear();
-localStorage.setItem("user", JSON.stringify(obj));
-
-let retrieved = localStorage.getItem("user");
-console.log(retrieved);
-
-let loaded = JSON.parse(retrieved);
-console.log(loaded);
-
-for(let key in loaded){
-    console.log(`${key} : ${loaded[key]}`);
+function saveTasksToLocalStorage(){
+    localStorage.setItem("todoTasks", JSON.stringify(tasks))
 }
 
-let arr = ["chips", "rice", "beans"];
-localStorage.setItem("food", JSON.stringify(arr));
+function loadTasksFromLocalStorage(){
+    const storedTasks = localStorage.getItem("todoTasks")
+    if(storedTasks){
+        try{
+            tasks = JSON.parse(storedTasks);
+        }catch(e){
+            console.error("error parsing tasks from localStorage: ", e);
+            tasks = [];
+        }
+    }else{
+        tasks = [];
+    }
+}
 
-let retrievedFood = localStorage.getItem("food"); 
+function renderTasks(){
+    taskList.innerHTML = "";
+    
+    tasks.forEach(
+        (task) => {
+            const li = document.createElement("li");
+            li.textContent = task.text;
+            li.dataset.id = task.id;
 
-let retrievedArray = JSON.parse(retrievedFood);
-console.log(retrievedArray[1]);
+            const deleteButton = document.createElement('button');
+            deleteButton.textContent = "Delete";
+            deleteButton.dataset.id = task.id;
+
+            deleteButton.addEventListener("click", (event) =>{
+                const taskIdToDelete = parseInt(event.target.dataset.id);
+                tasks = tasks.filter(task => task.id !== taskIdToDelete);
+
+                saveTasksToLocalStorage();
+                renderTasks();
+            });
+
+            li.appendChild(deleteButton);
+            taskList.appendChild(li);
+        }
+    );
+}
+
+loadTasksFromLocalStorage();
+renderTasks();
 
 
-console.log(retrievedArray.includes("beans"));
+const savedTheme = localStorage.getItem('savedTheme');
+
+if(savedTheme){
+    currentThemeIndex = themes.indexOf(savedTheme);
+    if(currentThemeIndex === -1){
+        currentThemeIndex = 0;
+    }
+        bodyEl.classList.add(themes[currentThemeIndex]);
+        localStorage.setItem('savedTheme', themes[currentThemeIndex]);
+    }else{
+        bodyEl.classList.add(themes[currentThemeIndex]);
+        localStorage.setItem('savedTheme', themes[currentThemeIndex]);
+    }
+
+
+addTaskButton.addEventListener("click", ()=>{
+    const taskText = taskInput.value.trim();
+
+    if(taskText !== ''){
+        const newTask = {
+            id:Date.now(),
+            text: taskText,
+            completed: false,
+        };
+        tasks.push(newTask);
+        saveTasksToLocalStorage();
+        renderTasks();
+        taskInput.value = '';
+    }else{
+        alert('Please enter a task!');
+    }
+});
+
+taskInput.addEventListener('keypress', (event)=>{
+    if(event.key === "Enter"){
+        addTaskButton.click();
+    }
+});
+
+changeThemeButton.addEventListener('click', () => {
+    bodyEl.classList.remove(themes[currentThemeIndex]);
+    currentThemeIndex++;
+
+    if(currentThemeIndex >= themes.length){
+        currentThemeIndex = 0;
+    }
+
+    bodyEl.classList.add(themes[currentThemeIndex]);
+
+    localStorage.setItem("savedTheme", themes[currentThemeIndex]);
+});
 
