@@ -168,4 +168,36 @@ document.body.addEventListener('click', function () {
     console.log('The document body was clicked');
 });
 
+let div2 = document.createElement("div");
+div2.setAttribute("id", "colorBox");
+div2.setAttribute("style", "margin-top: 10px; height: 100px; width: 100px; background-color: lightgray;")
+
+bodyEl.appendChild(div2);
+
+let p2 = document.createElement("p");
+p2.textContent = "I am a message";
+p2.setAttribute("id", "message" );
+
+bodyEl.appendChild(p2);
+
+let button6 = document.createElement("button");
+button6.textContent = "Change Both"
+button6.setAttribute("id", "triggerButton");
+
+bodyEl.appendChild(button6);
+
+const myChange = new Event("click");
+
+div2.addEventListener('click', ()=>{
+    div2.style.backgroundColor = "lightBlue";
+});
+
+p2.addEventListener('click', ()=>{
+    p2.textContent = "I have changed";
+})
+
+button6.addEventListener("click", ()=>{
+    div2.dispatchEvent(myChange);
+    p2.dispatchEvent(myChange);
+});
 
