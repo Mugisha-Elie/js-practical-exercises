@@ -201,3 +201,33 @@ button6.addEventListener("click", ()=>{
     p2.dispatchEvent(myChange);
 });
 
+
+const div3 = document.createElement("div");
+div3.setAttribute("class", "colorBox3");
+
+bodyEl.appendChild(div3);
+
+const div4 = document.createElement("div");
+div4.setAttribute("class", "colorBox4");
+
+div3.appendChild(div4);
+
+const div5 = document.createElement("div");
+div5.setAttribute("class", "colorBox5");
+
+div4.appendChild(div5);
+
+const div6 = document.createElement("div");
+div6.setAttribute("class", "colorBox6");
+
+div5.appendChild(div6);
+
+const button7 = document.createElement("button");
+button7.textContent = "Target";
+button7.setAttribute("class", "button7");
+
+div6.appendChild(button7);
+
+
+
+

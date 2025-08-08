@@ -1,3 +1,6 @@
+*{
+    box-sizing: border-box;
+}
 .highlight{
     background-color: lightyellow;
     border: 1px solid goldenrod;
@@ -5,4 +8,33 @@
 
 .pos{
     display: block;
+}
+
+.colorBox3{
+    padding: 20px;
+    border: 30px solid lightgreen;
+    margin: 10px;
+}
+
+.colorBox4{
+    padding: 20px;
+    border: 30px solid lightblue;
+    
+}
+
+.colorBox5{
+    padding: 20px;
+    border: 30px solid lightpink;
+    
+}
+
+.colorBox6{
+    padding: 20px;
+    border: 30px solid lightcoral;
+    display: flex;
+    
+}
+
+.button7{
+    
 }
