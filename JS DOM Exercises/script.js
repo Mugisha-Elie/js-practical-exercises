@@ -202,6 +202,9 @@ button6.addEventListener("click", ()=>{
 });
 
 
+
+
+
 const div3 = document.createElement("div");
 div3.setAttribute("class", "colorBox3");
 
@@ -222,12 +225,175 @@ div6.setAttribute("class", "colorBox6");
 
 div5.appendChild(div6);
 
+
+
 const button7 = document.createElement("button");
 button7.textContent = "Target";
 button7.setAttribute("class", "button7");
+button7.dataset.id = 0;
 
 div6.appendChild(button7);
 
+const div7 = document.createElement("div");
+div7.setAttribute("id", "parent-div");
+
+const p3 = document.createElement("p");
+p3.setAttribute("id", "child-p");
+p3.textContent = "Hover over me!";
+
+div7.appendChild(p3);
+bodyEl.appendChild(div7);
+
+// div7.addEventListener('mouseover', ()=>{
+//     console.log("Mouseover event on the Parent Div")
+// })
+
+// p3.addEventListener('mouseover', ()=>{
+//     console.log("Mouseover event on the Child P")
+// })
 
 
+button7.addEventListener("click", (event)=>{
+    
+
+        if(event.target.dataset.id === "0"){
+            setTimeout(()=>{
+        button7.classList.add("button-shadow");
+        alert("Event reached at target phase")
+        button8.style.opacity = "100%";
+        button7.style.opacity = "30%";
+        }, 2500);
+        }
+    
+}, true)
+
+div3.addEventListener("click", (event)=>{
+    
+    if(event.target.dataset.id === "0"){
+            setTimeout(()=>{
+        div3.classList.add("div3-color");
+    }, 500);
+        }
+
+}, true)
+
+div4.addEventListener("click", (event)=>{
+    if(event.target.dataset.id === "0"){
+    setTimeout(()=>{
+        div4.classList.add("div4-color");
+    }, 1000);
+}
+}, true)
+
+div5.addEventListener("click", (event)=>{
+    if(event.target.dataset.id === "0"){
+    setTimeout(()=>{
+        div5.classList.add("div5-color");
+    }, 1500);
+}
+}, true)
+
+div6.addEventListener("click", (event)=>{
+    if(event.target.dataset.id === "0"){
+    setTimeout(()=>{
+        div6.style.borderColor = "yellow";
+    }, 2000);
+}
+})
+
+div3.addEventListener("click", (event)=>{
+    if(event.target.dataset.id === 1){
+    setTimeout(()=>{
+        div3.classList.add("div3-color");
+    }, 500);
+}
+})
+
+div4.addEventListener("click", (event)=>{
+    if(event.target.dataset.id === 1){
+    setTimeout(()=>{
+        div4.classList.add("div4-color");
+    }, 1000);
+}
+})
+
+div5.addEventListener("click", (event)=>{
+    if(event.target.dataset.id === 1){
+    setTimeout(()=>{
+        div5.classList.add("div5-color");
+    }, 1500);
+}
+})
+
+div6.addEventListener("click", ()=>{
+    if(event.target.dataset.id === 1){
+    setTimeout(()=>{
+        div6.style.borderColor = "yellow";
+    }, 2000);
+}
+})
+
+
+const button8 = document.createElement("button");
+button8.textContent = "Bubble";
+button8.dataset.id = 1;
+
+button8.classList.add("bubble-button");
+
+div6.appendChild(button8);
+
+// button8.addEventListener('click', (event)=>{
+//     if(event.target.dataset.id === "1"){
+//         alert("Feature Coming soon");
+//     }
+// });
+
+div6.addEventListener('click', (event)=>{
+    if(event.target.dataset.id === "1"){
+        setTimeout(()=>{
+       div6.style.borderColor = "lightgrey" ;
+        }
+        ,500)
+    }
+});
+
+div5.addEventListener('click', (event)=>{
+    if(event.target.dataset.id === "1"){
+        setTimeout(()=>{
+       div5.style.borderColor = "lightgrey" ;
+        }
+        ,1000)
+    }
+    
+})
+
+div4.addEventListener('click', (event)=>{
+    if(event.target.dataset.id === "1"){
+        setTimeout(()=>{
+       div4.style.borderColor = "lightgrey" ;
+        }
+        ,1500)
+    }
+})
+
+div3.addEventListener('click', (event)=>{
+    if(event.target.dataset.id === "1"){
+        setTimeout(()=>{
+       div3.style.borderColor = "lightgrey" ;
+        }
+        ,2000)
+    }
+})
+
+button8.addEventListener('click', (event)=>{
+    if(event.target.dataset.id === "1"){
+        setTimeout(()=>{
+        button8.classList.add("button-shadow");
+        alert("Event reached at target phase")
+        button7.style.opacity = "100%";
+        button8.style.opacity = "30%";
+        }
+        ,3000)
+    }
+});
 

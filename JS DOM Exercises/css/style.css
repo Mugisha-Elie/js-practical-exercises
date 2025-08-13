@@ -14,27 +14,94 @@
     padding: 20px;
     border: 30px solid lightgreen;
     margin: 10px;
+    transition: border-color 0.5s ease;
 }
 
 .colorBox4{
     padding: 20px;
     border: 30px solid lightblue;
+    transition: border-color 0.5s ease;
     
 }
 
 .colorBox5{
     padding: 20px;
     border: 30px solid lightpink;
+    transition: border-color 0.5s ease;
+
     
 }
 
 .colorBox6{
     padding: 20px;
+    padding-top: 30px;
     border: 30px solid lightcoral;
-    display: flex;
+    position: relative;
+    transition: border-color 0.5s ease;
+    
     
 }
 
 .button7{
+    padding: 10px 15px;
+    background-color: #5E936C;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    position:absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 70%;
+    transition: background-color 0.5s ease
     
+}
+
+#parent-div{
+    padding: 20px;
+    border: 2px solid lightgrey;
+    text-align: center
+}
+
+/* .colorBox3, .colorBox4, .colorBox5, .colorBox6{
+    border-radius: 50%;
+} */
+
+.button-color{
+    background-color: #3a5b43;
+}
+
+.div3-color{
+border-color: #0f0 ;
+}
+
+.div4-color{
+border-color: #00f;
+}
+
+.div5-color{
+border-color: rgb(255, 0, 38);
+}
+
+.div6-color{
+border-color: rgb(235, 57, 57);
+}
+
+/* .button-shadow{
+background-color: #12321a;
+} */
+
+.bubble-button{
+    padding: 10px 15px;
+    background-color: #5E936C;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    position:absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 30%;
+    transition: background-color 0.5s ease;
+    opacity: 30%;
 }
