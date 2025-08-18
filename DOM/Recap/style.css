@@ -64,3 +64,8 @@ body{
 .btn.stop:hover{
     background-color: rgb(134, 3, 3);
 }
+
+.btn.play{
+    padding: 10px 15px;
+    padding-top: 8px;
+}

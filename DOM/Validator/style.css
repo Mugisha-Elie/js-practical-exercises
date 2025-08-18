@@ -1,0 +1,14 @@
+
+body{
+    font-family: 'Inter', sans-serif;
+}
+
+.input-error{
+    border-color: #ef4444;
+}
+
+.error-message{
+    color: #ef4444;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+}
