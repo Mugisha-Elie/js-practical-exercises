@@ -1,13 +1,15 @@
 function findUniq(arr) {
-    let result = [];
-    arr.forEach((elem, index, arr) => {
-        if(elem !== arr[index-1] && elem !== arr[index+1]){
-            result.push(elem);
+    let obj = {};
+    for(let element of arr){
+        if(obj[element]){
+            obj[element] += 1;
+        }else{
+            obj[element] = 1;
         }
-    });
-    
-    //result.forEach(num);
-    return result;
+    }
+    return Number(arr.filter(el => 
+        obj[el] === 1
+    ).join(""));
 }
 
 
