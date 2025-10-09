@@ -55,6 +55,7 @@ for(let g of guy){
     console.log(g);
 }
 
+
 // const blue = Object.entries(guy);
 
 // console.log(...blue);
