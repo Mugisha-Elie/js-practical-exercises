@@ -7,7 +7,7 @@ function *numberSequence(){
 
 const iterate = numberSequence();
 
-console.log(iterate.next().value);
+console.log(iterate.next());
 console.log(iterate.next().value);
 console.log(iterate.next().value);
 console.log(iterate.next().value);
