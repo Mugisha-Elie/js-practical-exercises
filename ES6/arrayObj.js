@@ -6,4 +6,4 @@ function objNot(arr){
     })
 }
 
-console.log(objNot(arr))
+console.log(objNot(arr));
