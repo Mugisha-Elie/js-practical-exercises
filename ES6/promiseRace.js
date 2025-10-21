@@ -19,9 +19,9 @@ const promise3 = new Promise((res, rej) => {
 
 Promise.race([promise1, promise2, promise3])
 .then((msg) => {
-    console.log("Fastest resolved promise", msg);
+    console.log("Fastest resolved promise:", msg);
 }).catch(error => {
-    console.log("Fastest rejected promise", error);
+    console.log("Fastest rejected promise:", error);
 })
 
 Promise.any([promise1, promise2, promise3])

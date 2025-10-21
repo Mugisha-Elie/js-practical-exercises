@@ -25,5 +25,5 @@ Promise.all([promise1, promise2, promise3])
     })
 })
 .catch((error) => {
-    console.log("One of the promises was rejected: ", error)
+    console.log("One of the promises was rejected ", error)
 })
