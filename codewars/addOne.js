@@ -3,7 +3,7 @@ function upArray(arr){
     let numL = num.toString().length;
     if(numL > 1){
         return null;
-    }else
+    }
 })
   return result;
 }
