@@ -3,7 +3,7 @@ function nextBigger(n){
     if(numArray.length === 2){
         let y = numArray[numArray.length - 2]
         let x = numArray.at(-1)
-        return x, y
+        return [x, y] 
     }
     
 }
