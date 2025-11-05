@@ -28,4 +28,13 @@ function Car(){
 }
 
 let car = new Car();
-car.speedUp(50)
+// car.speedUp(50)
+
+function show(){
+    return (x) => x + arguments[0]
+}
+
+let display = show(10, 20);
+console.log(display)
+let result = display(5);
+console.log(result);
