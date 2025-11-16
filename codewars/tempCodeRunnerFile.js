@@ -1,6 +1,5 @@
-let count = 0;
-  while (h > window){
-    h -= bounce;
-    count++; 
-  }
-  return count;
+const arr = ["I want 5 gold coins"];
+// arr.forEach(elem => {
+//     let q = elem.split("").filter(char => !isNaN(Number(char))).join("").trim()
+//     console.log(q)
+// })
