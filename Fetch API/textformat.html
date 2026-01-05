@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Format</title>
+</head>
+<body>
+    <h1 id="display">Loading....</h1>
+
+    <script>
+        const container = document.getElementById("display");
+        async function getMessage(url){
+            const response = await fetch(url);
+            if(response.ok){
+                const data = response.json()
+                container.innerHTML = data.followers
+            }else{
+                container.innerHTML = response.statusText
+            }
+        }
+
+        getMessage("https://api.github.com/users/octocat")
+    </script>
+</body>
+</html>
