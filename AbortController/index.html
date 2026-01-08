@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abort Controller</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="w-screen h-screen ">
+    <header class="flex justify-center items-center py-5 mb-2">
+        <h1 class="text-3xl font-semibold">MotorSport image Generator</h1>
+    </header>
+
+    <main class="mx-20 flex flex-col justify-between items-center text-lg h-[70vh] gap-10">
+        <div class="flex justify-center items-center gap-5">
+            <!-- <button id="motogp" class="hover:underline hover:underline-offset-5 hover:cursor-pointer">MotoGP</button> -->
+            <button id="formula" class="hover:underline hover:underline-offset-5 hover:cursor-pointer">Formula 1</button>
+            <button id="gt3" class="hover:underline hover:underline-offset-5 hover:cursor-pointer">GT</button>
+        </div>
+
+        <div id="imageContainer" class="border border-gray-400 rounded-lg flex-1 w-1/2"></div>
+    </main>
+
+   <script src="./controller.js"></script> 
+</body>
+</html>

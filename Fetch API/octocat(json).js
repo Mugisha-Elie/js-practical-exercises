@@ -24,5 +24,5 @@ getData("https://api.github.com/users/octocat")
 .then(response => response.json())
 .then(data => fetch(data.followers_url))
 .then(followers => followers.json())
-.then(followersData => console.log(followersData[0]))
+.then(followersData => console.log(followersData[1]))
 .catch(error => console.log(error));
