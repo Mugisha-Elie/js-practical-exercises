@@ -10,11 +10,11 @@ formula.addEventListener("click", () => {
       imageContainer.classList.add("bg-cover")
     });
 });
-
+ 
 
 gt3.addEventListener("click", () => {
   
-  new Promise(resolve => setTimeout(resolve, 5000))
+  new Promise(resolve => setTimeout(resolve, 3000))
     .then(() => {
       imageContainer.style.backgroundImage = "url('./images/Nissan.jpeg')";
       imageContainer.classList.add("bg-cover")
