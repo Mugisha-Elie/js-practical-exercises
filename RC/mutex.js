@@ -1,17 +1,15 @@
 let balance = 0;
-let islocked = false;
+// let islocked = false;
 
 let randomDelay = () => {
     return new Promise(resolve => setTimeout(resolve, Math.random() * 1000));
 }
-
+let islocked = false;
 async function deposit(amount){
     while(islocked){
         await new Promise(resolve => setTimeout(resolve, 1));
     }
-
     islocked = true;
-
     try{
         const currentBalance = balance;
         console.log("currentBalance:", balance);
@@ -23,7 +21,6 @@ async function deposit(amount){
     }catch(error){
         console.log("An error occurred", error)
     }
-
     islocked = false;
 }
 

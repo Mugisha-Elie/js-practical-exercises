@@ -21,6 +21,14 @@ const pool = new Pool({
     port: db_port,
 })
 
+pool.connect((error) => {
+  if(error){
+    console.log(error)
+  }else{
+    console.log("Database Connected successfully");
+  }
+})
+
 
 app.get("/users", async (req, res) => {
     try{
