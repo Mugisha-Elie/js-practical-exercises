@@ -9,41 +9,44 @@ const urls = [url1, url2, url3, url4, url5, url6];
 
 
 
-async function fetchWithConcurrencyLimit(url, limit){
-    const results = new Array(url.length);
-    console.log(results);
+async function fetchWithConcurrecyLimit(urls, limit){
+    const results = new Array(urls.length);
+    // console.log(results);
 
-    const line = url.entries();
-    console.log(line)
+    const line = urls.entries();
+    console.log(line);
 
     async function worker(){
-        for(const [index, url] of line){
-            try{
-                const response = await fetch(url);
+        for(const[index, url] of line){
+                try{
+                    const response = await fetch(url)
 
-                if(!response.ok){
-                    throw new Error("HTTP Error")
+                    if(!response.ok){
+                        throw new Error(`HTTP Error ${response.status} ${response.statusText}`)
+                    }
+
+                    results[index] = await response.json();
+                    console.log(results)
+
+                }catch(error){
+
+                    results[index] = {error: error.message}
+                    console.log(results)
+                    
                 }
-
-                results[index] = await response.json();
-                console.log(results)
-            }catch(error){
-                results[index] = {error: error.message}
-            }
-
         }
     }
-
+    
     const workers = [];
 
-    for(let i=0; i<limit; i++){
-        workers.push(worker())
+    for(let i = 0; i < limit; i++){
+        workers.push(worker());
     }
 
-    await Promise.all(workers)
+    await Promise.all(workers);
 
     return results;
 }
 
-const workerResults = await fetchWithConcurrencyLimit(urls, 2)
+const workerResults = await fetchWithConcurrecyLimit(urls, 2)
 console.log(workerResults)
