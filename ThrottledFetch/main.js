@@ -8,45 +8,34 @@ const url6 = "https://gist.githubusercontent.com/Mugisha-Elie/bc0e3b62796ebced72
 const urls = [url1, url2, url3, url4, url5, url6];
 
 
-
-async function fetchWithConcurrecyLimit(urls, limit){
-    const results = new Array(urls.length);
-    // console.log(results);
-
-    const line = urls.entries();
-    console.log(line);
+async function throttledFetch(urls, limit){
+    const results = new Array(urls.length)
+    const queue = urls.entries();
 
     async function worker(){
-        for(const[index, url] of line){
-                try{
-                    const response = await fetch(url)
-
-                    if(!response.ok){
-                        throw new Error(`HTTP Error ${response.status} ${response.statusText}`)
-                    }
-
-                    results[index] = await response.json();
-                    console.log(results)
-
-                }catch(error){
-
-                    results[index] = {error: error.message}
-                    console.log(results)
-                    
+        for(const [index, url] of queue){
+            try{
+                const response = await fetch(url);
+                if(!response.ok){
+                    throw new Error(`HTTP Error ${response.status} ${response.statusText}`);
                 }
+
+                results[index] = await response.json();
+            }catch(error){
+                results[index] = {error: error.message}; 
+            }
         }
     }
-    
-    const workers = [];
 
-    for(let i = 0; i < limit; i++){
-        workers.push(worker());
+    const workers = [];
+    for(let i=0; i<limit; i++){
+        workers.push(worker())
     }
 
     await Promise.all(workers);
 
-    return results;
+    return results
 }
 
-const workerResults = await fetchWithConcurrecyLimit(urls, 2)
-console.log(workerResults)
+throttledFetch(urls, 3)
+.then(result => console.log(result))
